@@ -20,13 +20,10 @@ subject to{
      
  //Dimensional Constraints
  forall(i in 1..n) {
- 	x_i[i] == 1 => point[i, 1] >= 0;
- 	x_i[i] == 1 => point[i, 1] <= x - s[i];
- 	x_i[i] == 1 => point[i, 2] >= 0;
- 	x_i[i] == 1 => point[i, 1] <= y - s[i];
+ 	x_i[i] == 1 => 0 <= point[i, 1] <= x - s[i];
+ 	x_i[i] == 1 => 0 <= point[i, 2] <= y - s[i];
  	
- 	x_i[i] == 0 => point[i, 1] == -1;
- 	x_i[i] == 0 => point[i, 2] == -1;
+ 	x_i[i] == 0 => point[i, 1] == -1 && point[i, 2] == -1;
  }
  
  forall(i in 1..n, j in 1..n) {
