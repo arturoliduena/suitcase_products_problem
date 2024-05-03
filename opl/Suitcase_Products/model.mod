@@ -26,11 +26,13 @@ subject to{
  	x_i[i] == 0 => point[i, 1] == -1 && point[i, 2] == -1;
  }
  
- forall(i in 1..n, j in 1..n) {
-   if(i != j){
-     x_i[i] == 1 && x_i[j] == 1 && (point[j, 1] <= point[i, 1] + s[i] && point[j, 1] >= point[i, 1]) => (point[j, 2] >= point[i, 2] + s[i] || point[j, 2] <= point[i, 2]);
-     x_i[i] == 1 && x_i[j] == 1 && (point[j, 2] <= point[i, 2] + s[i] && point[j, 2] >= point[i, 2]) => (point[j, 1] >= point[i, 1] + s[i] || point[j, 1] <= point[i, 1]);
-   }
+ // collision detection
+ forall(i in 1..n, j in i+1..n) {
+     x_i[i] == 1 && x_i[j] == 1 => 
+     	point[i, 1] >= point[j, 1] + s[i] || 
+     	point[i, 1] + s[i] <= point[j, 1] ||
+     	point[i, 2] >= point[j, 2] + s[i] || 
+     	point[i, 2] + s[i] <= point[j, 2];
  }
  
  //price time product
