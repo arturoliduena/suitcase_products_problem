@@ -8,9 +8,6 @@
             			
             <ref name="model.mod" type="model">
 			</ref>
-            			
-            <ref name="project.5.dat" type="data">
-			</ref>
             		
         </config>
         	

@@ -1,11 +1,11 @@
-int caseWidth    = ...;  // Width    of the suitcase.
-int caseHeight   = ...;  // Height   of the suitcase.
-int caseCapacity = ...;  // Capacity of the suitcase.
+int       caseWidth    = ...;  // Width    of the suitcase.
+int       caseHeight   = ...;  // Height   of the suitcase.
+int       caseCapacity = ...;  // Capacity of the suitcase.
 
-int n            = ...;  // Number  of     products.
-int price[1..n]  = ...;  // Prices  of the products.
+int       n = ...;  // Number  of     products.
+int price[1..n] = ...;  // Prices  of the products.
 int weight[1..n] = ...;  // Weights of the products.
-int side[1..n]   = ...;  // Sides   of the boxes of the products.
+int side[1..n] = ...;  // Sides   of the boxes of the products.
  
 dvar boolean x_i[i in 1..n];
 dvar int point[i in 1..n, j in 1..2];

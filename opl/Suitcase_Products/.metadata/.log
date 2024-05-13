@@ -1,0 +1,16 @@
+!SESSION 2024-05-06 23:19:52.240 -----------------------------------------------
+eclipse.buildId=Build R0
+java.fullversion=18.0.2-ea+9
+JRE 18 Mac OS X aarch64-64-Bit 20220818_37 (JIT enabled, AOT enabled)
+OpenJ9   - 1d9d16830
+OMR      - b58aa2708
+JCL      - 8406c39ea29 based on jdk-18.0.2+9
+BootLoader constants: OS=macosx, ARCH=aarch64, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/kam/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch aarch64 -clean -keyring /Users/kam/.eclipse_keyring
+
+!ENTRY org.eclipse.ui 2 2 2024-05-06 23:20:24.021
+!MESSAGE Invalid preference category path: org.eclipse.wst.html.ui.preferences.web (bundle: org.eclipse.wst.jsdt.ui, page: org.eclipse.wst.jsdt.ui.preferences.JavaBasePreferencePage)
+
+!ENTRY ilog.odms.ide.opllang 1 0 2024-05-06 23:21:30.239
+!MESSAGE concert_wrap.IloEndMT

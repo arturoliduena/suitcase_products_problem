@@ -1,6 +1,6 @@
-int caseWidth    = ...;  // Width    of the suitcase.
-int caseHeight   = ...;  // Height   of the suitcase.
-int caseCapacity = ...;  // Capacity of the suitcase.
+int       caseWidth    = ...;  // Width    of the suitcase.
+int       caseHeight   = ...;  // Height   of the suitcase.
+int       caseCapacity = ...;  // Capacity of the suitcase.
 
 int n            = ...;  // Number  of     products.
 int price[1..n]  = ...;  // Prices  of the products.
