@@ -1,0 +1,17 @@
+# file name: ../AMMMLabHeuristics/data/instance_XX.dat
+instancesDirectory = output;
+fileNamePrefix = suitcase;
+fileNameExtension = dat;
+numInstances = 10;
+
+caseWidth = 10;
+caseHeight = 10;
+caseCapacity = 100;
+
+numItems = 20;
+minPricePerItem = 1;
+maxPricePerItem = 100;
+minWeightPerItem = 1;
+maxWeightPerItem = 20;
+minSidePerItem = 1;
+maxSidePerItem = 5;
