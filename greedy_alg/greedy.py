@@ -1,5 +1,6 @@
 import sys
 from Heuristics.datParser import DATParser
+from utils import build_input_list, print_results
 
 
 def run():
@@ -78,13 +79,6 @@ def greedy(max_weight, max_width, max_height, candidates):
         selected.append((x, y, side))
 
 
-def build_input_list(price, weight, side):
-    output = []
-    for i in range(len(price)):
-        output.append((price[i], weight[i], side[i]))
-    return output
-
-
 def weight_cmp(item):
     price = item[0]
     weight = item[1]
@@ -136,29 +130,6 @@ def check_overlap(a, b):
             or bx + bside <= ax
             or ay + aside <= by
             or by + bside <= ay)
-
-def print_results(width, height, result):
-    for i in range(height):
-        line = []
-        for j in range(width):
-            overlaps = False
-            number = 0
-            for (ri, res) in enumerate(result):
-                number = ri
-                (x, y, side) = res
-                if x <= j < x + side and y <= i < y + side:
-                    overlaps = True
-                    break
-            if overlaps:
-                if number <= 9:
-                    line.append(str(number))
-                elif number <= 9 + 26:
-                    line.append(str(chr(ord('A') + number - 10)))
-                else:
-                    line.append(str(chr(ord('a') + number - 10)))
-            else:
-                line.append(" ")
-        print(''.join(line))
 
 if __name__ == '__main__':
     sys.exit(run())
