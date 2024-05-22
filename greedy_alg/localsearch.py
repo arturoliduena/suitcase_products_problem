@@ -34,11 +34,17 @@ def run():
     # An algorithm that handles max weight reached could be implemented but it would be more complicated since
     # it would need to remove high weight items and then fill in multiple holes
 
+    # While there is weight capacity available
     while total_weight < max_weight and len(rest) > 0:
+
+        # Sort the selected items from lowest price first
         selected.sort(key=price_srt_res, reverse=True)
+
+        # Sort the remaining items from highest price first
         rest.sort(key=price_srt)
         (nprice, nweight, nside) = rest.pop(0)
 
+        # Find an item with same size
         i = 0
         while i < len(selected) and selected[i][2] != nside:
             i += 1
@@ -46,6 +52,7 @@ def run():
         if i == len(selected):
             continue
 
+        # Swap items
         (x, y, oside, oweight, oprice) = selected[i]
         if total_weight - oweight + nweight > max_weight:
             continue
