@@ -33,9 +33,9 @@ class InstanceGenerator(object):
         fileNameExtension = self.config.fileNameExtension
         numInstances = self.config.numInstances
 
-        caseWidth = self.config.caseWidth
-        caseHeight = self.config.caseHeight
-        caseCapacity = self.config.caseCapacity
+        x = self.config.x
+        y = self.config.y
+        c = self.config.c
         numItems = self.config.numItems
 
         minPricePerItem = self.config.minPricePerItem
@@ -54,9 +54,9 @@ class InstanceGenerator(object):
             instancePath = os.path.join(instancesDirectory, '%s_%d.%s' % (fileNamePrefix, i, fileNameExtension))
             fInstance = open(instancePath, 'w')
 
-            # caseWidth = random.uniform(minCaseWidth, maxCaseWidth)
-            # caseHeight = random.uniform(minCaseHeight, maxCaseHeight)
-            # caseCapacity = random.uniform(minCaseCapacity, maxCaseCapacity)
+            # x = random.uniform(minx, maxx)
+            # y = random.uniform(minCaseHeight, maxCaseHeight)
+            # c = random.uniform(minCaseCapacity, maxCaseCapacity)
 
             itemPrice = [0] * numItems
             for t in range(numItems):
@@ -76,24 +76,24 @@ class InstanceGenerator(object):
 
             """
             An instance needs to contain:
-            caseWidth: int - width of the suitcase
-            caseHeight: int - height of the suitcase
-            caseCapacity: int - weight capacity of the suitcase
+            x: int - width of the suitcase
+            y: int - height of the suitcase
+            c: int - weight capacity of the suitcase
             n: int - number of items to pick from
-            price: int[] - list of length n containing item prices
-            weight: int[] - list of length n containing item weights
-            side: int[] - list of length n containing item side lengths
+            p: int[] - list of length n containing item prices
+            w: int[] - list of length n containing item weights
+            s: int[] - list of length n containing item side lengths
             """
 
-            fInstance.write('caseWidth=%d;\n' % caseWidth)
-            fInstance.write('caseHeight=%d;\n' % caseHeight)
-            fInstance.write('caseCapacity=%d;\n' % caseCapacity)
+            fInstance.write('x=%d;\n' % x)
+            fInstance.write('y=%d;\n' % y)
+            fInstance.write('c=%d;\n' % c)
 
             fInstance.write('n=%d;\n' % numItems)
 
             # translate vector of floats into vector of strings and concatenate that strings separating them by a single space character
-            fInstance.write('price=[%s];\n' % (' '.join(map(str, itemPrice))))
-            fInstance.write('weight=[%s];\n' % (' '.join(map(str, itemWeight))))
-            fInstance.write('side=[%s];\n' % (' '.join(map(str, itemSide))))
+            fInstance.write('p=[%s];\n' % (' '.join(map(str, itemPrice))))
+            fInstance.write('w=[%s];\n' % (' '.join(map(str, itemWeight))))
+            fInstance.write('s=[%s];\n' % (' '.join(map(str, itemSide))))
 
             fInstance.close()

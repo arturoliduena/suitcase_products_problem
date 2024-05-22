@@ -4,9 +4,9 @@ fileNamePrefix = suitcase;
 fileNameExtension = dat;
 numInstances = 10;
 
-caseWidth = 10;
-caseHeight = 10;
-caseCapacity = 100;
+x = 10;
+y = 10;
+c = 100;
 
 numItems = 20;
 minPricePerItem = 1;

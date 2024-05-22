@@ -27,8 +27,8 @@ class ValidateConfig(object):
     def validate(data):
         # Validate that mandatory input parameters were found
         paramList = ['instancesDirectory', 'fileNamePrefix', 'fileNameExtension', 'numInstances',
-                     'caseWidth', 'caseHeight',
-                     'caseCapacity', 'numItems',
+                     'x', 'y',
+                     'c', 'numItems',
                      'minPricePerItem', 'maxPricePerItem',
                      'minWeightPerItem', 'maxWeightPerItem',
                      'minSidePerItem', 'maxSidePerItem'
@@ -52,19 +52,19 @@ class ValidateConfig(object):
             raise AMMMException('numInstances(%s) has to be a positive integer value.' % str(numInstances))
 
         # Case width
-        caseWidth = data.caseWidth
-        if not isinstance(caseWidth, int) or (caseWidth <= 0):
-            raise AMMMException('caseWidth(%s) has to be a positive integer value.' % str(caseWidth))
+        x = data.x
+        if not isinstance(x, int) or (x <= 0):
+            raise AMMMException('x(%s) has to be a positive integer value.' % str(x))
 
         # Case height
-        caseHeight = data.caseHeight
-        if not isinstance(caseHeight, int) or (caseHeight <= 0):
-            raise AMMMException('caseHeight(%s) has to be a positive integer value.' % str(caseHeight))
+        y = data.y
+        if not isinstance(y, int) or (y <= 0):
+            raise AMMMException('y(%s) has to be a positive integer value.' % str(y))
 
         # Case capacity
-        caseCapacity = data.caseCapacity
-        if not isinstance(caseCapacity, int) or (caseCapacity <= 0):
-            raise AMMMException('caseCapacity(%s) has to be a positive integer value.' % str(caseCapacity))
+        c = data.c
+        if not isinstance(c, int) or (c <= 0):
+            raise AMMMException('c(%s) has to be a positive integer value.' % str(c))
 
         # Num items
         numItems = data.numItems
