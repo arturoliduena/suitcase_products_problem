@@ -13,16 +13,16 @@ def run():
 
     # 1: Prepare input data
     data = DATParser.parse(input_file)
-    l = build_input_list(data.price, data.weight, data.side)
+    l = build_input_list(data.p, data.w, data.s)
 
-    max_weight = data.caseCapacity
+    max_weight = data.c
 
     print(f"Max suitcase weight: {max_weight}")
-    print(f"Max suitcase space: {data.caseWidth * data.caseHeight}")
+    print(f"Max suitcase space: {data.x * data.y}")
     print(f"Total candidates: {len(list(l))}")
     print("-----------------------")
 
-    (total_price, total_weight, selected) = greedy(max_weight, data.caseWidth, data.caseHeight, l)
+    (total_price, total_weight, selected) = greedy(max_weight, data.x, data.y, l)
 
     """
     TODO:
@@ -46,7 +46,7 @@ def run():
         (x, y, side) = s
         print(f"x: {x}, y: {y}, side: {side}")
     print("-----------------------")
-    print_results(data.caseWidth, data.caseHeight, selected)
+    print_results(data.x, data.y, selected)
 
 def pack():
     pass
