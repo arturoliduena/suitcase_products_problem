@@ -1,0 +1,150 @@
+!SESSION 2024-05-06 23:22:03.848 -----------------------------------------------
+eclipse.buildId=Build R0
+java.fullversion=18.0.2-ea+9
+JRE 18 Mac OS X aarch64-64-Bit 20220818_37 (JIT enabled, AOT enabled)
+OpenJ9   - 1d9d16830
+OMR      - b58aa2708
+JCL      - 8406c39ea29 based on jdk-18.0.2+9
+BootLoader constants: OS=macosx, ARCH=aarch64, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/kam/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch aarch64 -clean -keyring /Users/kam/.eclipse_keyring
+
+!ENTRY org.eclipse.ui 2 2 2024-05-06 23:22:24.371
+!MESSAGE Invalid preference category path: org.eclipse.wst.html.ui.preferences.web (bundle: org.eclipse.wst.jsdt.ui, page: org.eclipse.wst.jsdt.ui.preferences.JavaBasePreferencePage)
+
+!ENTRY ilog.odms.ide.opllang 1 0 2024-05-06 23:23:10.482
+!MESSAGE concert_wrap.IloEndMT
+!SESSION 2024-05-06 23:24:04.303 -----------------------------------------------
+eclipse.buildId=Build R0
+java.fullversion=18.0.2-ea+9
+JRE 18 Mac OS X aarch64-64-Bit 20220818_37 (JIT enabled, AOT enabled)
+OpenJ9   - 1d9d16830
+OMR      - b58aa2708
+JCL      - 8406c39ea29 based on jdk-18.0.2+9
+BootLoader constants: OS=macosx, ARCH=aarch64, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/kam/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch aarch64 -clean -clean -data /Users/kam/Documents/uni/ammm/suitcase_products_problem/opl -clean -keyring /Users/kam/.eclipse_keyring
+
+!ENTRY org.eclipse.ui.ide 4 4 2024-05-06 23:24:06.579
+!MESSAGE -data /valid/path, workspace already set:file:/Users/kam/Documents/uni/ammm/suitcase_products_problem/opl/
+
+!ENTRY org.eclipse.ui 2 2 2024-05-06 23:24:07.981
+!MESSAGE Invalid preference category path: org.eclipse.wst.html.ui.preferences.web (bundle: org.eclipse.wst.jsdt.ui, page: org.eclipse.wst.jsdt.ui.preferences.JavaBasePreferencePage)
+
+!ENTRY ilog.odms.ide.core 1 0 2024-05-06 23:24:28.343
+!MESSAGE ODM Bundle is OFF
+
+!ENTRY ilog.odms.ide.opllang 1 0 2024-05-06 23:44:53.162
+!MESSAGE concert_wrap.IloEndMT
+!SESSION 2024-05-07 16:11:00.123 -----------------------------------------------
+eclipse.buildId=Build R0
+java.fullversion=18.0.2-ea+9
+JRE 18 Mac OS X aarch64-64-Bit 20220818_37 (JIT enabled, AOT enabled)
+OpenJ9   - 1d9d16830
+OMR      - b58aa2708
+JCL      - 8406c39ea29 based on jdk-18.0.2+9
+BootLoader constants: OS=macosx, ARCH=aarch64, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/kam/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch aarch64 -clean -keyring /Users/kam/.eclipse_keyring
+
+!ENTRY org.eclipse.ui 2 2 2024-05-07 16:11:10.850
+!MESSAGE Invalid preference category path: org.eclipse.wst.html.ui.preferences.web (bundle: org.eclipse.wst.jsdt.ui, page: org.eclipse.wst.jsdt.ui.preferences.JavaBasePreferencePage)
+
+!ENTRY ilog.odms.ide.core 1 0 2024-05-07 16:11:11.111
+!MESSAGE ODM Bundle is OFF
+
+!ENTRY org.eclipse.jface 4 0 2024-05-08 18:18:25.332
+!MESSAGE The command ("ilog.odms.ide.ui.references") is undefined
+!STACK 0
+java.lang.Exception
+	at org.eclipse.jface.action.ExternalActionManager$CommandCallback.isActive(ExternalActionManager.java:367)
+	at org.eclipse.jface.action.ActionContributionItem.isCommandActive(ActionContributionItem.java:634)
+	at org.eclipse.jface.action.ActionContributionItem.isVisible(ActionContributionItem.java:690)
+	at org.eclipse.jface.action.MenuManager.isChildVisible(MenuManager.java:927)
+	at org.eclipse.jface.action.MenuManager.update(MenuManager.java:750)
+	at org.eclipse.jface.action.MenuManager.update(MenuManager.java:673)
+	at org.eclipse.e4.ui.workbench.renderers.swt.MenuManagerRenderer.scheduleManagerUpdate(MenuManagerRenderer.java:1227)
+	at org.eclipse.e4.ui.workbench.renderers.swt.MenuManagerRenderer.processContents(MenuManagerRenderer.java:655)
+	at org.eclipse.e4.ui.workbench.renderers.swt.MenuManagerRenderer.subscribeTopicChildAdded(MenuManagerRenderer.java:325)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:58)
+	at org.eclipse.swt.widgets.Synchronizer.syncExec(Synchronizer.java:183)
+	at org.eclipse.ui.internal.UISynchronizer.syncExec(UISynchronizer.java:133)
+	at org.eclipse.swt.widgets.Display.syncExec(Display.java:5193)
+	at org.eclipse.e4.ui.workbench.swt.DisplayUISynchronize.syncExec(DisplayUISynchronize.java:34)
+	at org.eclipse.e4.ui.internal.di.UIEventObjectSupplier$UIEventHandler.handleEvent(UIEventObjectSupplier.java:64)
+	at org.eclipse.equinox.internal.event.EventHandlerWrapper.handleEvent(EventHandlerWrapper.java:205)
+	at org.eclipse.equinox.internal.event.EventHandlerTracker.dispatchEvent(EventHandlerTracker.java:203)
+	at org.eclipse.equinox.internal.event.EventHandlerTracker.dispatchEvent(EventHandlerTracker.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.ListenerQueue.dispatchEventSynchronous(ListenerQueue.java:151)
+	at org.eclipse.equinox.internal.event.EventAdminImpl.dispatchEvent(EventAdminImpl.java:133)
+	at org.eclipse.equinox.internal.event.EventAdminImpl.sendEvent(EventAdminImpl.java:75)
+	at org.eclipse.equinox.internal.event.EventComponent.sendEvent(EventComponent.java:44)
+	at org.eclipse.e4.ui.services.internal.events.EventBroker.send(EventBroker.java:55)
+	at org.eclipse.e4.ui.internal.workbench.UIEventPublisher.notifyChanged(UIEventPublisher.java:63)
+	at org.eclipse.emf.common.notify.impl.BasicNotifierImpl.eNotify(BasicNotifierImpl.java:424)
+	at org.eclipse.emf.ecore.util.EcoreEList.dispatchNotification(EcoreEList.java:249)
+	at org.eclipse.emf.common.notify.impl.NotifyingListImpl.addUnique(NotifyingListImpl.java:294)
+	at org.eclipse.emf.common.util.AbstractEList.add(AbstractEList.java:304)
+	at org.eclipse.e4.ui.workbench.renderers.swt.MenuManagerRenderer.reconcileManagerToModel(MenuManagerRenderer.java:1051)
+	at org.eclipse.ui.internal.PopupMenuExtender.addMenuContributions(PopupMenuExtender.java:379)
+	at org.eclipse.ui.internal.PopupMenuExtender.menuAboutToShow(PopupMenuExtender.java:355)
+	at org.eclipse.jface.action.MenuManager.fireAboutToShow(MenuManager.java:338)
+	at org.eclipse.jface.action.MenuManager.handleAboutToShow(MenuManager.java:468)
+	at org.eclipse.jface.action.MenuManager$2.menuShown(MenuManager.java:495)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:259)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4577)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1524)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1547)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1528)
+	at org.eclipse.swt.widgets.Menu.menuWillOpen(Menu.java:808)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:6367)
+	at org.eclipse.swt.internal.cocoa.OS.objc_msgSend(Native Method)
+	at org.eclipse.swt.internal.cocoa.NSMenu.popUpContextMenu(NSMenu.java:80)
+	at org.eclipse.swt.widgets.Menu._setVisible(Menu.java:270)
+	at org.eclipse.swt.widgets.Display.runPopups(Display.java:4440)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3932)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1155)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:643)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:550)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:171)
+	at ilog.odms.ide.rcp.IloApplication.start(IloApplication.java:125)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:402)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
+
+!ENTRY ilog.odms.ide.opllang 1 0 2024-05-09 11:58:17.318
+!MESSAGE concert_wrap.IloEndMT
+!SESSION 2024-05-21 18:58:49.727 -----------------------------------------------
+eclipse.buildId=Build R0
+java.fullversion=18.0.2-ea+9
+JRE 18 Mac OS X aarch64-64-Bit 20220818_37 (JIT enabled, AOT enabled)
+OpenJ9   - 1d9d16830
+OMR      - b58aa2708
+JCL      - 8406c39ea29 based on jdk-18.0.2+9
+BootLoader constants: OS=macosx, ARCH=aarch64, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/kam/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch aarch64 -clean -keyring /Users/kam/.eclipse_keyring
+
+!ENTRY org.eclipse.ui 2 2 2024-05-21 18:58:58.138
+!MESSAGE Invalid preference category path: org.eclipse.wst.html.ui.preferences.web (bundle: org.eclipse.wst.jsdt.ui, page: org.eclipse.wst.jsdt.ui.preferences.JavaBasePreferencePage)
+
+!ENTRY ilog.odms.ide.core 1 0 2024-05-21 18:58:58.370
+!MESSAGE ODM Bundle is OFF
+
+!ENTRY ilog.odms.ide.opllang 1 0 2024-05-21 20:05:32.356
+!MESSAGE concert_wrap.IloEndMT

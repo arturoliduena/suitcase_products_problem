@@ -13,7 +13,7 @@ def print_results(width, height, result):
             number = 0
             for (ri, res) in enumerate(result):
                 number = ri
-                (x, y, side) = res
+                (x, y, side, _, _) = res
                 if x <= j < x + side and y <= i < y + side:
                     overlaps = True
                     break

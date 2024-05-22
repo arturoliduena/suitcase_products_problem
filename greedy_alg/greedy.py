@@ -22,14 +22,14 @@ def run():
     print(f"Total candidates: {len(list(l))}")
     print("-----------------------")
 
-    (total_price, total_weight, selected) = greedy(max_weight, data.x, data.y, l)
+    (total_price, total_weight, selected, _) = greedy(max_weight, data.caseWidth, data.caseHeight, l)
 
     print(f"Total price: {total_price}")
     print(f"Total weight: {total_weight}")
     print("-----------------------")
     print(f"Selected elements:")
     for s in selected:
-        (x, y, side) = s
+        (x, y, side, _, _) = s
         print(f"x: {x}, y: {y}, side: {side}")
     print("-----------------------")
     print_results(data.x, data.y, selected)
@@ -40,6 +40,7 @@ def greedy(max_weight, max_width, max_height, candidates):
     # Candidate: (price, weight, side)
     # Selected: (x, y, side)
     selected = []
+    discarded = []
     total_weight = 0
     total_space = 0
     total_price = 0
@@ -53,12 +54,13 @@ def greedy(max_weight, max_width, max_height, candidates):
 
         # If there are no more candidates (all are selected or discarded) end the algorithm
         if len(candidates) == 0:
-            return (total_price, total_weight, selected)
+            return (total_price, total_weight, selected, discarded)
 
         # Sort candidates by value (price/side over weight)
         candidates.sort(key=weight_cmp)
 
         # Get the first candidate
+        # TODO: Change for grasp
         candidate = candidates.pop(0)
         # Find most appropriate position
         position = find_position(candidate, max_width, max_height, selected.copy())
@@ -66,6 +68,7 @@ def greedy(max_weight, max_width, max_height, candidates):
         # If it doesn't fit skip it
         # It has already been removed from candidates list bc it doesn't fit and won't fit anymore
         if position is None:
+            discarded.append(candidate)
             continue
 
         # Otherwise store all relevant data
@@ -76,7 +79,7 @@ def greedy(max_weight, max_width, max_height, candidates):
         total_space += side ** 2
 
         # Add it to selected items at given position
-        selected.append((x, y, side))
+        selected.append((x, y, side, weight, price))
 
 
 def weight_cmp(item):
@@ -109,8 +112,8 @@ def find_position(item, max_width, max_height, selected):
             #print(f"iterating: {(cx,cy)}")
             # If it overlaps remove the colliding item, add new candidate positions and
             # start over again from new position (without the removed colliding items)
-            (_, _, oside) = other
-            if check_overlap((cx, cy, iside), other):
+            (ox, oy, oside, _, _) = other
+            if check_overlap((cx, cy, iside), (ox, oy, oside)):
                 overlaps = True
                 if cx + oside < max_x:
                     checks.append((cx + oside, cy))
@@ -130,6 +133,7 @@ def check_overlap(a, b):
             or bx + bside <= ax
             or ay + aside <= by
             or by + bside <= ay)
+
 
 if __name__ == '__main__':
     sys.exit(run())
