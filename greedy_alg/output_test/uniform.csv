@@ -1,0 +1,3 @@
+file,weight,weight_t,weight_ls,weight_ls_t,size_linear,size_linear_t,size_linear_ls,size_linear_ls_t,size_quad,size_quad_t,size_quad_ls,size_quad_ls_t,combined_linear,combined_linear_t,combined_linear_ls,combined_linear_ls_t,combined_quad,combined_quad_t,combined_quad_ls,combined_quad_ls_t
+0,1781,336398000,2143,19196000,1369,263959000,1773,24048000,1279,311278000,1694,24000000,1354,234822000,1685,20712000,1340,247676000,1741,23869000
+1,1667,291938000,1954,17167000,1246,237774000,1696,22719000,1275,316093000,1731,23728000,1455,247707000,1817,22463000,1226,240379000,1554,23900000
