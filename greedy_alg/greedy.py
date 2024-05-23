@@ -1,41 +1,4 @@
-import sys
-from Heuristics.datParser import DATParser
-from utils import build_input_list, print_results
-
-
-def run():
-    # Read input
-    input_file = "input/suitcase_0.dat"
-
-    print("Greedy Algorithm")
-    print("-----------------------")
-    print(f"Reading input file {input_file}...")
-
-    # 1: Prepare input data
-    data = DATParser.parse(input_file)
-    l = build_input_list(data.p, data.w, data.s)
-
-    max_weight = data.c
-
-    print(f"Max suitcase weight: {max_weight}")
-    print(f"Max suitcase space: {data.x * data.y}")
-    print(f"Total candidates: {len(list(l))}")
-    print("-----------------------")
-
-    (total_price, total_weight, selected, _) = greedy(max_weight, data.caseWidth, data.caseHeight, l)
-
-    print(f"Total price: {total_price}")
-    print(f"Total weight: {total_weight}")
-    print("-----------------------")
-    print(f"Selected elements:")
-    for s in selected:
-        (x, y, side, _, _) = s
-        print(f"x: {x}, y: {y}, side: {side}")
-    print("-----------------------")
-    print_results(data.x, data.y, selected)
-
-
-def greedy(max_weight, max_width, max_height, candidates):
+def greedy(max_weight, max_width, max_height, candidates, sort):
     max_space = max_width * max_height
     # Candidate: (price, weight, side)
     # Selected: (x, y, side)
@@ -44,8 +7,10 @@ def greedy(max_weight, max_width, max_height, candidates):
     total_weight = 0
     total_space = 0
     total_price = 0
+    positions = [(0,0)]
 
     # Iterate indefinitely, end condition is checked inside the loop
+    i = 0
     while True:
         # Remove candidates that exceed limits
         # Space filter isn't totally accurate but it can skip some work later
@@ -57,13 +22,13 @@ def greedy(max_weight, max_width, max_height, candidates):
             return (total_price, total_weight, selected, discarded)
 
         # Sort candidates by value (price/side over weight)
-        candidates.sort(key=weight_cmp)
+        candidates.sort(key=sort)
 
         # Get the first candidate
         # TODO: Change for grasp
         candidate = candidates.pop(0)
         # Find most appropriate position
-        position = find_position(candidate, max_width, max_height, selected.copy())
+        position = find_position(positions, candidate, max_width, max_height, selected.copy())
 
         # If it doesn't fit skip it
         # It has already been removed from candidates list bc it doesn't fit and won't fit anymore
@@ -80,27 +45,12 @@ def greedy(max_weight, max_width, max_height, candidates):
 
         # Add it to selected items at given position
         selected.append((x, y, side, weight, price))
+        #print(f"Found {len(selected)} items")
 
 
-def weight_cmp(item):
-    price = item[0]
-    weight = item[1]
-    return price / weight
-
-
-def size_cmp(item):
-    price = item[0]
-    size = item[2]
-    return price / size
-
-
-def find_position(item, max_width, max_height, selected):
-    # Start at top left corner
-    checks = [(0, 0)]
-
+def find_position(positions, item, max_width, max_height, selected):
     (_, _, iside) = item
-    max_x = max_width - iside
-    max_y = max_height - iside
+    checks = positions.copy()
 
     # Iterate over all possible positions
     while len(checks) > 0:
@@ -113,16 +63,23 @@ def find_position(item, max_width, max_height, selected):
             # If it overlaps remove the colliding item, add new candidate positions and
             # start over again from new position (without the removed colliding items)
             (ox, oy, oside, _, _) = other
+            if ox + oside < cx or oy + oside < cy or ox > cx + iside or oy > cy + iside:
+                continue
+
+            # This check might be made redundant by the previous one but in that case it'll only run once so it's ok
             if check_overlap((cx, cy, iside), (ox, oy, oside)):
                 overlaps = True
-                if cx + oside < max_x:
-                    checks.append((cx + oside, cy))
-                if cy + oside < max_y:
-                    checks.append((cx, cy + oside))
                 break
 
         # If none of the other selected items overlap return this position, otherwise check next
         if not overlaps:
+            if cx + iside > max_width or cy + iside > max_height:
+                continue
+            if cx + iside < max_width:
+                positions.append((cx + iside, cy))
+            if cy + iside < max_height:
+                positions.append((cx, cy + iside))
+            positions.remove((cx, cy))
             return (cx, cy)
 
 
@@ -133,7 +90,3 @@ def check_overlap(a, b):
             or bx + bside <= ax
             or ay + aside <= by
             or by + bside <= ay)
-
-
-if __name__ == '__main__':
-    sys.exit(run())
