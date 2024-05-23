@@ -1,2 +1,4 @@
-*/.idea
+.idea
 opl/.metadata/*
+.DS_Store
+__pycache__
