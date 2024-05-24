@@ -28,7 +28,7 @@ settings_local_search = {
 
 def run():
     all_inputs = os.listdir("input")
-    for dataset in ["uniform", "size_sm", "size_lg", "weight_sm", "weight_lg"]:
+    for dataset in ["uniform", "side_sm", "side_lg", "weight_sm", "weight_lg"]:
         print(f"Using dataset: {dataset}")
 
         output_file = open(os.path.join("output_test", f"{dataset}.csv"), 'w')
