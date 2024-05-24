@@ -1,28 +1,21 @@
 # Cost functions for greedy algorithm
 
 def weight(item):
-    price = item[0]
-    weight = item[1]
-    return price / weight
+    return item.price / item.weight
 
 
 def size_linear(item):
-    price = item[0]
-    size = item[2]
-    return price / size
+    return item.price / item.side
 
 
 def size_quad(item):
-    price = item[0]
-    size = item[2] ** 2
-    return price / size
+    size = item.side ** 2
+    return item.price / size
 
 
 def combined_linear(item):
-    (price, weight, side) = item
-    return price / (weight * side)
+    return item.price / (item.weight * item.side)
 
 
 def combined_quad(item):
-    (price, weight, side) = item
-    return price / (weight * side * side)
+    return item.price / (item.weight * item.side * item.side)
