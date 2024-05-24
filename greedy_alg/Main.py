@@ -5,6 +5,7 @@ import time
 import Settings
 import cost
 from greedy import greedy
+from GRASP import GRASP
 from localsearch import local_search
 from Heuristics.datParser import DATParser
 
@@ -88,7 +89,8 @@ def run_alg(line, label, alg, data):
     (max_weight, width, height, candidates) = data
     if Settings.greedy[label]:
         t = time.time_ns()
-        res = greedy(max_weight, width, height, candidates, alg)
+        # res = greedy(max_weight, width, height, candidates, alg)
+        res = GRASP(max_weight, width, height, candidates, alg, 0)
         dt = time.time_ns() - t
         print_result(line, res, dt)
         if Settings.greedy[label]:
