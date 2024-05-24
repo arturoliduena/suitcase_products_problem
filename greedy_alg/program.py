@@ -30,7 +30,7 @@ class Suitcase:
         return f"Suitcase(max_weight={self.max_weight}, width={self.width}, height={self.height}, products={self.products})"
 
 
-dict = {
+cost_fn_dict = {
     "weight": cost.weight,
     "size_linear": cost.size_linear,
     "size_quad": cost.size_quad,
@@ -44,7 +44,7 @@ def execute(algorithm: str, data: DATAttributes, cost_fn_name: str):
     suitcase = Suitcase(data.c, data.x, data.y)
 
     # Run algorithms
-    cost_fn = dict[cost_fn_name]
+    cost_fn = cost_fn_dict[cost_fn_name]
     t = time.time_ns()
     if algorithm == "greedy":
         greedy = Greedy()
@@ -63,7 +63,6 @@ def execute(algorithm: str, data: DATAttributes, cost_fn_name: str):
 
 
 def product_list(data):
-    data.p, data.w, data.s
     products = []
     for i in range(data.n):
         products.append(Product(data.p[i], data.w[i], data.s[i]))

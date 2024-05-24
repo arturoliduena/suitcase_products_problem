@@ -5,10 +5,8 @@ class BaseAlgorithm:
     def __init__(self) -> None:
         pass
 
-    def solve(self, max_weight, max_width, max_height, candidates, sort, alpha=0):
+    def solve(self, max_weight, max_width, max_height, candidates, cost_fn, alpha=0):
         max_space = max_width * max_height
-        # Candidate: (price, weight, side)
-        # Selected: (x, y, side)
         selected = []
         discarded = []
         total_weight = 0
@@ -31,7 +29,7 @@ class BaseAlgorithm:
                 return (total_price, total_weight, selected, discarded)
 
             candidate = self.select_candidate(
-                candidates, sort, total_price, total_weight, selected, discarded, alpha)
+                candidates, cost_fn, total_price, total_weight, selected, discarded, alpha)
             # Find most appropriate position
             position = self.find_position(positions, candidate,
                                           max_width, max_height, selected.copy())

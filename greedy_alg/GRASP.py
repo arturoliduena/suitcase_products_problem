@@ -6,7 +6,7 @@ class GRASP(BaseAlgorithm):
     def __init__(self) -> None:
         pass
 
-    def select_candidate(self, candidates, sort, total_price, total_weight, selected, discarded, alpha):
+    def select_candidate(self, candidates, cost_fn, total_price, total_weight, selected, discarded, alpha):
         # Sort candidates by value price
         candidates = sorted(candidates, key=lambda x: x.price)
 
