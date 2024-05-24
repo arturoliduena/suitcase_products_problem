@@ -31,9 +31,10 @@ class Suitcase:
 
 
 cost_fn_dict = {
+    "price": cost.price,
     "weight": cost.weight,
-    "size_linear": cost.size_linear,
-    "size_quad": cost.size_quad,
+    "side_linear": cost.side_linear,
+    "side_quad": cost.side_quad,
     "combined_linear": cost.combined_linear,
     "combined_quad": cost.combined_quad
 }
@@ -54,12 +55,15 @@ def execute(algorithm: str, data: DATAttributes, cost_fn_name: str):
         grasp = GRASP()
         res = grasp.solve(suitcase.max_weight, suitcase.width,
                           suitcase.height, products, cost_fn, 0)
-    (total_price, total_weight, selected, rest) = res
+    (total_price, total_weight, total_size, selected, rest) = res
 
-    res = local_search(total_weight, total_price,
-                       suitcase.max_weight, selected, rest)
     dt = time.time_ns() - t
-    return res, dt
+    t = time.time_ns()
+
+    res_search = local_search(total_weight, total_price,
+                       suitcase.max_weight, selected, rest)
+    dt_search = time.time_ns() - t
+    return res, dt, res_search, dt_search
 
 
 def product_list(data):

@@ -46,39 +46,41 @@ def run():
             line = []
 
             # Add an indicator of the number of the dataset in case it's needed for analyzing data
-            if settings_values["file_num"]:
-                line.append(n)
+            line.append(f)
             data = DATParser.parse(input_file)
 
             # Run algorithms
-            for cost_fn_name in ["weight", "size_linear", "size_quad", "combined_linear", "combined_quad"]:
-                res, dt = execute("greedy", data, cost_fn_name)
-                print_result(line, res, dt)
+            for cost_fn_name in ["price", "weight", "side_linear", "side_quad", "combined_linear", "combined_quad"]:
+                res, dt, res_search, dt_search = execute("greedy", data, cost_fn_name)
+                #print(f"Greedy price {res[0]}, LS price {res_search[0]}")
+                print_result(line, res, dt, res_search, dt_search)
 
             # Write to file
             output_file.write(",".join(map(str, line)))
             output_file.write("\n")
 
 
-def print_result(output, res, time):
-    (total_price, total_weight, selected, _) = res
-    if settings_values["price"]:
-        output.append(total_price)
-    if settings_values["weight"]:
-        output.append(total_weight)
-    if settings_values["solution_elem"]:
-        output.append(len(selected))
-    if settings_values["time"]:
-        output.append(time)
+def print_result(output, res, time, res_search, time_search):
+    (price, weight, size, selected, _) = res
+    (price_search, weight_search, selected_search, _) = res_search
+    output.append(price)
+    output.append(price_search)
+    output.append(weight/10000)
+    output.append(weight_search/10000)
+    output.append(size/10000)
+    output.append(len(selected))
+    output.append(len(selected_search))
+    output.append(time / 1000000)
+    output.append(time_search / 1000000)
 
 
 def print_header(file):
     header = []
-    if settings_values["file_num"]:
-        header.append("file")
+    header.append("file")
+    print_alg_header(header, "price")
     print_alg_header(header, "weight")
-    print_alg_header(header, "size_linear")
-    print_alg_header(header, "size_quad")
+    print_alg_header(header, "side_linear")
+    print_alg_header(header, "side_quad")
     print_alg_header(header, "combined_linear")
     print_alg_header(header, "combined_quad")
     file.write(",".join(header))
@@ -86,24 +88,15 @@ def print_header(file):
 
 
 def print_alg_header(header, alg):
-    if settings_greedy[alg]:
-        if settings_values["price"]:
-            header.append(f"{alg}")
-        if settings_values["weight"]:
-            header.append(f"{alg}_w")
-        if settings_values["solution_elem"]:
-            header.append(f"{alg}_s")
-        if settings_values["time"]:
-            header.append(f"{alg}_t")
-    if settings_local_search[alg]:
-        if settings_values["price"]:
-            header.append(f"{alg}_ls")
-        if settings_values["weight"]:
-            header.append(f"{alg}_ls_w")
-        if settings_values["solution_elem"]:
-            header.append(f"{alg}_ls_s")
-        if settings_values["time"]:
-            header.append(f"{alg}_ls_t")
+    header.append(f"{alg}_price")
+    header.append(f"{alg}_price_ls")
+    header.append(f"{alg}_weight")
+    header.append(f"{alg}_weight_ls")
+    header.append(f"{alg}_size")
+    header.append(f"{alg}_elems")
+    header.append(f"{alg}_elems_ls")
+    header.append(f"{alg}_time")
+    header.append(f"{alg}_time_ls")
 
 
 if __name__ == '__main__':

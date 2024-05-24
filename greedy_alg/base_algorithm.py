@@ -26,7 +26,7 @@ class BaseAlgorithm:
 
             # If there are no more candidates (all are selected or discarded) end the algorithm
             if len(candidates) == 0:
-                return (total_price, total_weight, selected, discarded)
+                return (total_price, total_weight, total_space, selected, discarded)
 
             candidate = self.select_candidate(
                 candidates, cost_fn, total_price, total_weight, selected, discarded, alpha)
