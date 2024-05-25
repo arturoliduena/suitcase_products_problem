@@ -4,10 +4,13 @@ import time
 from typing import IO, Any
 import argparse
 import cost
+from base_algorithm import Solution
 from greedy import Greedy
 from GRASP import GRASP
 from localsearch import local_search
 from Heuristics.datParser import DATParser, DATAttributes
+import pandas as pd
+import numpy as np
 
 
 class Product:
@@ -46,24 +49,19 @@ def execute(algorithm: str, data: DATAttributes, cost_fn_name: str):
 
     # Run algorithms
     cost_fn = cost_fn_dict[cost_fn_name]
-    t = time.time_ns()
+    initial_time = time.time_ns()
     if algorithm == "greedy":
         greedy = Greedy()
-        res = greedy.solve(suitcase.max_weight, suitcase.width,
-                           suitcase.height, products, cost_fn)
+        solution: Solution = greedy.solve(suitcase.max_weight, suitcase.width,
+                                          suitcase.height, products, initial_time, cost_fn)
     if algorithm == "GRASP":
         grasp = GRASP()
-        res = grasp.solve(suitcase.max_weight, suitcase.width,
-                          suitcase.height, products, cost_fn, 0)
-    (total_price, total_weight, total_size, selected, rest) = res
+        solution: Solution = grasp.solve(suitcase.max_weight, suitcase.width,
+                                         suitcase.height, products, initial_time, cost_fn, 0)
 
-    dt = time.time_ns() - t
-    t = time.time_ns()
-
-    res_search = local_search(total_weight, total_price,
-                       suitcase.max_weight, selected, rest)
-    dt_search = time.time_ns() - t
-    return res, dt, res_search, dt_search
+    res_search: Solution = local_search(
+        solution, suitcase.max_weight, initial_time)
+    return solution, res_search
 
 
 def product_list(data):
@@ -82,4 +80,11 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     data = DATParser.parse(args.input_file_name)
-    sys.exit(execute(args.algorithm, data, "weight"))
+
+    solution, res_search = execute(
+        args.algorithm, data, "price")
+
+    df = pd.DataFrame(np.array([[args.input_file_name, 100, 100, 10000, 1000, solution.price, solution.weight, solution.space, len(solution.selected), solution.time, res_search.price, res_search.time]]),
+                      columns=['file_name', 'x', 'y', 'c', 'n', 'price', "weight", "space", "selected", 'time', 'price_search', 'time_search'])
+    df.to_csv('results.csv', mode='a', index=False)
+    print(df)

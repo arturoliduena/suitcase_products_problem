@@ -1,4 +1,12 @@
-def local_search(total_weight, total_price, max_weight, selected, candidates):
+import time
+from base_algorithm import Solution
+
+
+def local_search(solution, max_weight, initial_time) -> Solution:
+    total_weight = solution.weight
+    total_price = solution.price
+    selected = solution.selected
+    candidates = solution.discarded
     rest = []
     final = []
     while len(selected) > 0 and len(candidates) > 0:
@@ -25,13 +33,11 @@ def local_search(total_weight, total_price, max_weight, selected, candidates):
 
             # If the price of the candidate is smaller there is no better candidate, skip
             if item.price >= candidate.price:
-                #print("Item not valuable enough")
                 break
 
             # If new item is to heavy skip it
             new_weight = total_weight - item.weight + candidate.weight
             if new_weight > max_weight:
-                #print("Item too heavy")
                 continue
 
             # Perform swap
@@ -51,4 +57,5 @@ def local_search(total_weight, total_price, max_weight, selected, candidates):
         if nochanges:
             final.append(selected.pop(0))
 
-    return total_price, total_weight, selected + final, candidates + rest
+    t = time.time_ns() - initial_time
+    return Solution(total_price, total_weight, solution.space, selected + final, candidates + rest, t)

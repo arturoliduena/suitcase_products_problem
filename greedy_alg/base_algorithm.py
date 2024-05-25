@@ -1,11 +1,22 @@
 import random
+import time
+
+
+class Solution:
+    def __init__(self, price, weight, space, selected, discarded, time):
+        self.price = price
+        self.weight = weight
+        self.space = space
+        self.selected = selected
+        self.discarded = discarded
+        self.time = time / 1000000
 
 
 class BaseAlgorithm:
     def __init__(self) -> None:
         pass
 
-    def solve(self, max_weight, max_width, max_height, candidates, cost_fn, alpha=0):
+    def solve(self, max_weight, max_width, max_height, candidates, initial_time, cost_fn, alpha=0) -> Solution:
         max_space = max_width * max_height
         selected = []
         discarded = []
@@ -26,7 +37,8 @@ class BaseAlgorithm:
 
             # If there are no more candidates (all are selected or discarded) end the algorithm
             if len(candidates) == 0:
-                return (total_price, total_weight, total_space, selected, discarded)
+                t = time.time_ns() - initial_time
+                return Solution(total_price, total_weight, total_space, selected, discarded, t)
 
             candidate = self.select_candidate(
                 candidates, cost_fn, total_price, total_weight, selected, discarded, alpha)
@@ -60,7 +72,6 @@ class BaseAlgorithm:
 
             # Iterate over all non yet collided selected items
             for other in selected:
-                # print(f"iterating: {(cx,cy)}")
                 # If it overlaps remove the colliding item, add new candidate positions and
                 # start over again from new position (without the removed colliding items)
                 (ox, oy, oitem) = other
